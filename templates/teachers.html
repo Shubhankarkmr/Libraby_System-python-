@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teachers</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>{{ 'Update Teacher' if teacher else 'Add Teacher' }}</h1>
+    <form method="POST" action="{{ url_for('update_teacher', id=teacher.employee_id) if teacher else url_for('add_teacher') }}">
+        {% if not teacher %}
+        <label>Employee ID:</label>
+        <input type="text" name="employee_id" placeholder="Employee ID" required><br>
+        {% else %}
+        <label>Employee ID:</label>
+        <input type="text" name="employee_id" value="{{ teacher.employee_id }}" readonly><br>
+        {% endif %}
+
+        <label>Name:</label>
+        <input type="text" name="name" placeholder="Name" value="{{ teacher.name if teacher else '' }}" required><br>
+
+        <label>Salary:</label>
+        <input type="number" step="0.01" name="salary" placeholder="Salary" value="{{ teacher.salary if teacher else '' }}"><br>
+
+        <label>Phone Number:</label>
+        <input type="text" name="phone_no" placeholder="Phone Number" value="{{ teacher.phone_no if teacher else '' }}"><br>
+
+        <label>Address:</label>
+        <input type="text" name="address" placeholder="Address" value="{{ teacher.address if teacher else '' }}"><br>
+
+        <label>Date of Birth:</label>
+        <input type="date" name="dob" value="{{ teacher.dob if teacher else '' }}"><br>
+
+        <label>Age:</label>
+        <input type="number" name="age" placeholder="Age" value="{{ teacher.age if teacher else '' }}"><br>
+
+        <button type="submit">{{ 'Update' if teacher else 'Add' }}</button>
+    </form>
+
+    <h2>Teachers List</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Salary</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>DOB</th>
+            <th>Age</th>
+            <th>Actions</th>
+        </tr>
+        {% for t in teachers %}
+        <tr>
+            <td>{{ t.employee_id }}</td>
+            <td>{{ t.name }}</td>
+            <td>{{ t.salary }}</td>
+            <td>{{ t.phone_no }}</td>
+            <td>{{ t.address }}</td>
+            <td>{{ t.dob }}</td>
+            <td>{{ t.age }}</td>
+            <td>
+                <a href="{{ url_for('edit_teacher', id=t.employee_id) }}">Edit</a> |
+                <a href="{{ url_for('delete_teacher', id=t.employee_id) }}" onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br><a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>

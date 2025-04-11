@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <h1>Library Management System</h1>
+    <ul>
+        <li><a href="/students">Student</a></li>
+        <li><a href="/institutes">Institute</a></li>
+        <li><a href="/libraries">Library</a></li>
+        <li><a href="/books">Book</a></li>
+        <li><a href="/librarians">Librarian</a></li>
+        <li><a href="/teachers">Teachers</a></li>
+        <li><a href="/directors">Director</a></li>
+        <li><a href="/authors">Author</a></li>
+        <li><a href="/vehicles">Vehicle</a></li>
+        <li><a href="/publishers">Publisher</a></li>
+        
+    </ul>
+    <div class="er-diagram-box">
+        <a href="{{ url_for('images') }}">📊 ER Diagram</a>
+    </div>
+    
+</body>
+</html>

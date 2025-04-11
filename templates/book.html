@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>{{ 'Update Book' if book else 'Add Book' }}</h1>
+    <form method="POST" action="{{ url_for('update_book', id=book.book_id) if book else url_for('add_book') }}">
+        {% if not book %}
+        <label>Book ID:</label>
+        <input type="number" name="book_id" placeholder="Book ID" required><br>
+        {% endif %}
+
+        <label>Title:</label>
+        <input type="text" name="title" value="{{ book.title if book else '' }}" required><br>
+
+        <label>Number of Pages:</label>
+        <input type="number" name="no_of_pages" value="{{ book.no_of_pages if book else '' }}" required><br>
+
+        <label>Publisher Name:</label>
+        <input type="text" name="publisher_name" value="{{ book.publisher_name if book else '' }}" required><br>
+
+        <label>Published Date:</label>
+        <input type="date" name="published_date" value="{{ book.published_date if book else '' }}" required><br>
+
+        <label>Edition:</label>
+        <input type="text" name="edition" value="{{ book.edition if book else '' }}" required><br>
+
+        <label>Library Id:</label>
+        <input type="number" name="library_id" value="{{ book.library_id if book else '' }}" required><br>
+
+        <label>Authors:</label>
+        <select name="authors" multiple required>
+            {% for author in all_authors %}
+                <option value="{{ author.id }}"
+                    {% if book and author in book.authors %}selected{% endif %}>
+                    {{ author.name }}
+                </option>
+            {% endfor %}
+        </select><br>
+
+        <button type="submit">{{ 'Update' if book else 'Add' }}</button>
+    </form>
+
+    <h2>Books List</h2>
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Authors</th>
+            <th>Edition</th>
+            <th>Publisher</th>
+            <th>Published Date</th>
+            <th>Pages</th>
+            <th>Actions</th>
+        </tr>
+        {% for b in books %}
+        <tr>
+            <td>{{ b.book_id }}</td>
+            <td>{{ b.title }}</td>
+            <td>
+                {% for author in b.authors %}
+                    {{ author.name }}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </td>
+            <td>{{ b.edition }}</td>
+            <td>{{ b.publisher_name }}</td>
+            <td>{{ b.published_date }}</td>
+            <td>{{ b.no_of_pages }}</td>
+            <td>
+                <a href="{{ url_for('edit_book', id=b.book_id) }}">Edit</a> |
+                <a href="{{ url_for('delete_book', id=b.book_id) }}" onclick="return confirm('Are you sure you want to delete this book?')">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br><a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>

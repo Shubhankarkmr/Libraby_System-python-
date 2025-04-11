@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>{{ 'Update Library' if library else 'Add Library' }}</h1>
+    <form method="POST" action="{{ url_for('update_library', id=library.id) if library else url_for('add_library') }}">
+        <label>Name:</label>
+        <input type="text" name="name" placeholder="Library Name" value="{{ library.name if library else '' }}" required><br>
+
+        <label>Date of Inception:</label>
+        <input type="date" name="date_of_inception" value="{{ library.date_of_inception if library else '' }}" required><br>
+
+        <label>Floor No:</label>
+        <input type="number" name="floor_no" value="{{ library.floor_no if library else '' }}" required><br>
+
+        
+
+        <label>Institute ID:</label>
+        <input type="number" name="institute_id" value="{{ library.institute_id if library else '' }}" required><br>
+
+        <button type="submit">{{ 'Update' if library else 'Add' }}</button>
+    </form>
+
+    <h2>Libraries List</h2>
+    <table>
+        <tr>
+            <th>ID(internal)</th>
+            <th>Name</th>
+            <th>Date of Inception</th>
+            <th>Floor</th>
+            
+            <th>Institute ID</th>
+            <th>Actions</th>
+        </tr>
+        {% for l in libraries %}
+        <tr>
+            <td>{{ l.id }}</td>
+            <td>{{ l.name }}</td>
+            <td>{{ l.date_of_inception }}</td>
+            <td>{{ l.floor_no }}</td>
+           
+            <td>{{ l.institute_id }}</td>
+            <td>
+                <a href="{{ url_for('edit_library', id=l.id) }}">Edit</a> |
+                <a href="{{ url_for('delete_library', id=l.id) }}" onclick="return confirm('Are you sure you want to delete this library?')">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br><a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>

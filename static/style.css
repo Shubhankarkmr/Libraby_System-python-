@@ -1,0 +1,145 @@
+/* General Layout */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f2f5;
+    color: #333;
+    max-width: 900px;
+    margin: auto;
+    padding: 30px;
+}
+
+/* Headings */
+h1, h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+form {
+    background-color: #ffffff;
+    padding: 25px;
+    margin-bottom: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* Button Styling */
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2c80b4;
+}
+
+/* Navigation List */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 40px;
+}
+
+li {
+    background: #fff;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: box-shadow 0.2s;
+}
+
+li:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Link Styling */
+a {
+    text-decoration: none;
+    color: #3498db;
+    margin-left: 10px;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #1d6fa5;
+}
+
+/* Back Link */
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* ER Diagram Floating Box */
+.er-diagram-box {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border: 2px solid #3498db;
+    border-radius: 10px;
+    padding: 12px 18px;
+    background-color: #eaf6ff;
+    box-shadow: 0 0 12px rgba(52, 152, 219, 0.2);
+    font-family: Arial, sans-serif;
+}
+
+.er-diagram-box a {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.er-diagram-box a:hover {
+    color: #1d6fa5;
+}
+
+
+
+
+.back-home-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 20px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.back-home-btn:hover {
+    background-color: #2c80b4;
+    transform: translateY(-2px);
+    text-decoration: none;
+}
